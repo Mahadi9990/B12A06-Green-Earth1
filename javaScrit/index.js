@@ -1,6 +1,7 @@
 const removeButtonStyle = ()=>{
 
 }
+
 const makeCard =(details)=>{
     const card = document.getElementById("card")
     card.innerHTML =""
@@ -13,6 +14,13 @@ const makeCard =(details)=>{
         card.append(createCard)
     }
 }
+const allCard =async()=>{
+   const allCard =await fetch(`https://openapi.programming-hero.com/api/plants`) 
+   const data = await allCard.json()
+   const allData = data.plants
+   makeCard(allData)
+}
+allCard()
 const loadCardFormCatagoryButton = async(id)=>{
     const card = await fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     const data = await card.json()
