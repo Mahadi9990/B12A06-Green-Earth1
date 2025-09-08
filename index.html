@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>B12A06-Green-Earth</title>   
+    <title>B12A06-Green-Earth</title>
 
-     <!-- Style file Link -->
+    <!-- Style file Link -->
     <link rel="stylesheet" href="style/style.css" />
     <!-- Font Link -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,8 +32,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body class="inter">
-    <header>
-      <nav class="flex justify-between px-10 items-center h-25 text-white bg-[#15803D] mx-auto">
+    <header class="">
+      <nav
+        class="flex justify-between px-10 items-center text-white bg-[#15803D] mx-auto h-22"
+      >
         <div class="bar_icon block md:hidden">
           <i class="fa-solid fa-bars"></i>
         </div>
@@ -42,22 +44,79 @@
         </div>
         <div class="hidden md:block">
           <ul class="flex space-x-3">
-          <li class="hover:underline text-xl ">About</li>
-          <li class="hover:underline text-xl ">Gallery</li>
-          <li class="hover:underline text-xl ">Plant a Tree</li>
-        </ul>
+            <li class="hover:underline text-xl">About</li>
+            <li class="hover:underline text-xl">Gallery</li>
+            <li class="hover:underline text-xl">Plant a Tree</li>
+          </ul>
         </div>
         <button class="btn rounded-3xl bg-[#FACC15] text-[#15803D]">
           Plant a Tree
         </button>
       </nav>
-      <div class="banner_area">
-
+      <div
+        class="bg-[#CFF0DC] pt-4 banner_area flex flex-col md:flex-row justify-center items-center gap-6"
+      >
+        <div class="left w-[30%]">
+          <img src="assets/hero-leaf1.png" alt="" />
+        </div>
+        <div
+          class="middle space-y-5 w-[40%] flex flex-col mx-auto justify-center items-center"
+        >
+          <h1 class="text-xl md:text-2xl lg:text-4xl font-bold text-center">
+            Plant a Tree, Grow a Future
+          </h1>
+          <p class="text-md text-[#1F2937] text-center">
+            Join our mission to plant 1 million trees and make the Earth greener
+            for future generations.
+          </p>
+          <button class="btn rounded-3xl bg-[#FACC15]">Get Involved</button>
+        </div>
+        <div class="right w-[30%]">
+          <img class="h-full w-full" src="assets/hero-leaf2.png" alt="" />
+        </div>
       </div>
     </header>
-    <main>f</main>
+    <main>
+      <section>
+        <div class="card_container bg-[#CFF0DC]">
+          <h1 class="text-center text-xl md:text-2xl lg:text-3xl font-bold p-5" >
+            Choose Your Trees
+          </h1>
+          <hr class="text-[#01ff01] py-7" />
+          <div class="flex flex-col md:flex-row justify-evenly items-start">
+            <!-- Menu -->
+            <div id="catagory" class="w-full md:w-[15%]"></div>
+            <!-- Card -->
+            <div id="card" class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 w-[60%] mt-5 mx-auto">
+              <div class="item h-72 rounded-md bg-white p-3">
+
+              </div>
+              <div class="item h-72 rounded-md bg-white p-3">fff</div>
+              <div class="item h-72 rounded-md bg-white p-3">fff</div>
+            </div>
+            <!-- history -->
+            <div id="history" class="w-full md:w-[15%] pt-6">
+              <h1 class="text-3xl text-center font-semibold pb-5">Your Cart</h1>
+              <div class="flex flex-col justify-start item-center md:items-start mx-auto">
+                <div class="flex justify-between items-center gap-5 md:gap-0 lg:gap-5 w-[50%] mx-auto">
+                  <div class="text">
+                    <h2 class="text-xl font-bold">
+                      Mengo trees
+                      <p class="text-sm text-[#a39d9d]">$500 x 1</p>
+                    </h2>
+                  </div>
+                  <div class="icon">
+                    <i class="fa-solid fa-xmark"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
     <footer></footer>
-    
+
     <!-- js File Link -->
     <script src="javaScrit/index.js"></script>
   </body>
