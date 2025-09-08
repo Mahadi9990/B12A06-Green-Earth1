@@ -6,6 +6,17 @@ const removeButtonStyle = ()=>{
  });
  
 }
+const spaner =(status)=>{
+    if(status === true){
+        document.getElementById("loader").classList.remove("hidden")
+        document.getElementById("card").classList.add("hidden")
+        document.getElementById("model_404").classList.remove("hidden")
+    }else{
+        document.getElementById("loader").classList.add("hidden")
+        document.getElementById("card").classList.remove("hidden")
+        document.getElementById("model_404").classList.add("hidden")
+    }
+}
 const oneCardModel =async(id)=>{
     const oneCardData =await fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
     const data = await oneCardData.json()
@@ -33,6 +44,7 @@ const oneCardModel =async(id)=>{
     document.getElementById("my_modal_5").showModal()
 }
 const makeCard =(details)=>{
+    spaner(true)
     const card = document.getElementById("card")
     card.innerHTML =""
     for(const item of details){
@@ -50,9 +62,10 @@ const makeCard =(details)=>{
             </div>
             <button class="text-white btn w-full rounded-3xl bg-[#15803D]">Add to Card</button>
             </div>
-        `
-        card.append(createCard)
-    }
+            `
+            card.append(createCard)
+        }
+        spaner(false)
 }
 const allCard =async()=>{
    const allCard =await fetch(`https://openapi.programming-hero.com/api/plants`) 
@@ -62,6 +75,7 @@ const allCard =async()=>{
 }
 allCard()
 const loadCardFormCatagoryButton = async(id)=>{
+    spaner(true)
     const card = await fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     const data = await card.json()
     const plants = data.plants
