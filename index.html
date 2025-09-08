@@ -31,22 +31,29 @@
     <!-- Tailwindcss Link -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body>
+  <body class="inter">
     <header>
-      <nav
-        class="flex justify-between px-10 items-center h-25 text-white bg-[#15803D] mx-auto"
-      >
+      <nav class="flex justify-between px-10 items-center h-25 text-white bg-[#15803D] mx-auto">
+        <div class="bar_icon block md:hidden">
+          <i class="fa-solid fa-bars"></i>
+        </div>
         <div class="loco_area">
           <h1 class="text-3xl font-bold text-white">Green Earth</h1>
         </div>
-        <ul>
-          <li>About</li>
-          <li>Gallery</li>
-          <li>Plant a Tree</li>
+        <div class="hidden md:block">
+          <ul class="flex space-x-3">
+          <li class="hover:underline text-xl ">About</li>
+          <li class="hover:underline text-xl ">Gallery</li>
+          <li class="hover:underline text-xl ">Plant a Tree</li>
         </ul>
-        <button class="btn rounded-2xl bg-[#FACC15]"></button>
+        </div>
+        <button class="btn rounded-3xl bg-[#FACC15] text-[#15803D]">
+          Plant a Tree
+        </button>
       </nav>
-      <div class="banner_area"></div>
+      <div class="banner_area">
+        
+      </div>
     </header>
     <main></main>
     <footer></footer>
