@@ -1,15 +1,55 @@
+
 const removeButtonStyle = ()=>{
-
+ const allbtn = document.querySelectorAll('.menu_btn')
+ allbtn.forEach(element => {
+    element.classList.remove("active")
+ });
+ 
 }
-
+const oneCardModel =async(id)=>{
+    const oneCardData =await fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
+    const data = await oneCardData.json()
+    const cardData = data.plants
+    const modelBox = document.getElementById("model_box")
+    modelBox.innerHTML = `
+        <div class="modal-box space-y-6" id="model_box">
+            <img class="rounded-xl h-40 w-full object-cover" src="${cardData.image}" alt="">
+            <h1 onclick="oneCardModel(${cardData.id})" class="text-xl font-bold cursor-pointer">${cardData.name}</h1>
+            <p class="text-sm overflow-hidden text-ellipsis whitespace-normal [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]">
+              ${cardData.description}
+            </p>
+            <div class="flex justify-between items-center">
+                <button class="btn bg-[#DCFCE7] text-[#15803D] rounded-3xl">${cardData.category}</button>
+                <button ><i class="fa-solid fa-bangladeshi-taka-sign"></i> ${cardData.price}</button>
+            </div>
+            <div class="modal-action">
+              <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn">Close</button>
+              </form>
+            </div>
+          </div>
+    `
+    document.getElementById("my_modal_5").showModal()
+}
 const makeCard =(details)=>{
     const card = document.getElementById("card")
     card.innerHTML =""
     for(const item of details){
-        console.log(item.price)
         const createCard = document.createElement("div")
         createCard.innerHTML =`
-            <div class="item h-72 rounded-md bg-white p-3">${item.price}</div>
+            <div  class="item rounded-md bg-white p-3 flex flex-col gap-2">
+            <img class="rounded-xl h-40 w-full object-cover" src="${item.image}" alt="">
+            <h1 onclick="oneCardModel(${item.id})" class="text-xl font-bold cursor-pointer">${item.name}</h1>
+            <p class="text-sm overflow-hidden text-ellipsis whitespace-normal [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]">
+              ${item.description}
+            </p>
+            <div class="flex justify-between items-center">
+                <button class="btn bg-[#DCFCE7] text-[#15803D] rounded-3xl">${item.category}</button>
+                <button ><i class="fa-solid fa-bangladeshi-taka-sign"></i> ${item.price}</button>
+            </div>
+            <button class="text-white btn w-full rounded-3xl bg-[#15803D]">Add to Card</button>
+            </div>
         `
         card.append(createCard)
     }
@@ -25,11 +65,10 @@ const loadCardFormCatagoryButton = async(id)=>{
     const card = await fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     const data = await card.json()
     const plants = data.plants
-
-    console.log(plants)
+    removeButtonStyle()
+    document.getElementById(`menu_btn_${id}`).classList.add("active")
     makeCard(plants)
-
-
+    
 }
 const loadCatagory =async()=>{
     const catagory = await fetch("https://openapi.programming-hero.com/api/categories")
@@ -41,7 +80,7 @@ const loadCatagory =async()=>{
         const ul = document.createElement("div")
         ul.innerHTML = `
             <ul class="flex justify-center items-center flex-col w-full">
-                <il onclick="loadCardFormCatagoryButton(${item.id})" class="w-[100%] text-center hover:bg-[#22cb22] p-3 text hover:text-[white] text-[green]">
+                <il id='menu_btn_${item.id}' onclick="loadCardFormCatagoryButton(${item.id})" class="menu_btn w-[100%] text-center hover:bg-[#22cb22] p-3 text hover:text-[white] text-[green] cursor-pointer">
                 <a  class="w-full px-4 py-2 rounded text-xm md:text-sm text-center items-center">${item.category_name}</a>
                 </il>
             </ul>
