@@ -49,6 +49,15 @@ const makeCard =(details)=>{
     card.innerHTML =""
     for(const item of details){
         const createCard = document.createElement("div")
+        if(item.length === 0 ){
+            createCard.innerHTML =`
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 w-[60%] mt-5 mx-auto">
+              <div class="col-span-3">
+                <h1 class="text-4xl font-extrabold text-center mx-auto">Can't found a single item</h1>
+              </div>
+            `
+            spaner(false)
+        }
         createCard.innerHTML =`
             <div  class="item rounded-md bg-white p-3 flex flex-col gap-2">
             <img class="rounded-xl h-40 w-full object-cover" src="${item.image}" alt="">
@@ -68,6 +77,7 @@ const makeCard =(details)=>{
         spaner(false)
 }
 const allCard =async()=>{
+   spaner(true)
    const allCard =await fetch(`https://openapi.programming-hero.com/api/plants`) 
    const data = await allCard.json()
    const allData = data.plants
@@ -81,8 +91,7 @@ const loadCardFormCatagoryButton = async(id)=>{
     const plants = data.plants
     removeButtonStyle()
     document.getElementById(`menu_btn_${id}`).classList.add("active")
-    makeCard(plants)
-    
+    makeCard(plants)    
 }
 const loadCatagory =async()=>{
     const catagory = await fetch("https://openapi.programming-hero.com/api/categories")

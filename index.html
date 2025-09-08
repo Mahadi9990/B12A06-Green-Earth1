@@ -84,7 +84,7 @@
           </h1>
           <hr class="text-[#01ff01] py-7" />
           <!-- spenner -->
-          <section id="loader" class="hidden ">
+          <div id="loader" class="hidden ">
                 <div  class="flex justify-center items-center mt-10">
                   <span class="loading loading-bars loading-xs"></span>
                   <span class="loading loading-bars loading-sm"></span>
@@ -92,20 +92,19 @@
                   <span class="loading loading-bars loading-lg"></span>
                   <span class="loading loading-bars loading-xl"></span>
                 </div>
-              </section>
-
+          </div>
           <div class="flex flex-col md:flex-row justify-evenly items-start">
             <!-- Menu -->
             <div id="catagory" class="w-full md:w-[15%]">
 
             </div>
-            <!-- Card -->
+            <!-- PAGE NOT FOUNDS -->
             <div id="model_404"
-              class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 w-[60%] mt-5 mx-auto">
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 w-[60%] mt-5 mx-auto">
               <div class="col-span-3">
                 <h1 class="text-4xl font-extrabold text-center mx-auto">Can't found a single item</h1>
               </div>
-              
+               <!-- Card -->
             </div>
             <div id="card"
               class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 w-[60%] mt-5 mx-auto">
@@ -141,6 +140,20 @@
             </div>
           </div>
         </dialog>
+      </section>
+      <section id="about" class="bg-[#CFF0DC]">
+        <h1 class="text-center text-2xl md:text-4xl font-bold p-9 ">About the Campaign</h1>
+        <div class="flex flex-col lg:flex-row justify-center items-center gap-6 mx-auto w-[70%]">
+          <img src="assets/about.png" alt="">
+          <div class="text_box space-y-5">
+            <p class="text-xl justify-center">Green Earth is a global tree plantation initiative dedicated to fighting climate change. Since our start, we’ve planted over 500,000 trees worldwide. By joining our campaign, you help restore forests, create habitats for wildlife, and combat global warming.</p>
+            <ol class="list-disc pl-5">
+              <li>Restoration of natural habitats</li>
+              <li>Improvement of air quality</li>
+              <li>Support for local communities</li>
+            </ol>
+          </div>
+        </div>
       </section>
     </main>
     <footer></footer>
