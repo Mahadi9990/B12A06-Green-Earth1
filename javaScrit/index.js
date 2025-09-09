@@ -1,5 +1,16 @@
 
-const history =[]
+let history = [
+   
+];
+
+const historyFilter = (itemId) => {
+    history = history.filter(item => item.id !== itemId);
+    const main = document.getElementById(`btn-history-${itemId}`).classList.add("hidden")
+    return history
+}
+
+
+
 
 const historyShowing =(historyArray)=>{
     const historyDiv = document.getElementById("history_Loop")
@@ -7,8 +18,8 @@ const historyShowing =(historyArray)=>{
     for(let item of historyArray){
         const newHistory = document.createElement("div")
         newHistory.innerHTML = `
-        <div class="flex flex-row items-center justify-between">
-                  <div class="text">
+        <div id="btn-history-${item.id}" class="flex flex-row items-center justify-between">
+                  <div  class="text">
                     <h2 class="text-sm font-semibold">${item.treeName}</h2>
                     <p class="text-xs text-[#a39d9d]">$${item.price} x 1</p>
                     <p class="text-xs text-[#a39d9d]">${item.date}</p>
@@ -41,9 +52,7 @@ const cardAdd =(id,name,price)=>{
     history.push(data)
     historyShowing(history)
 }
-const historyFilter = (itemId) => { 
-    console.log(itemId)
-}
+
 const spaner =(status)=>{
     if(status === true){
         document.getElementById("loader").classList.remove("hidden")
@@ -114,6 +123,7 @@ const makeCard =(details)=>{
         }
         spaner(false)
 }
+
 const allCard =async()=>{
    spaner(true)
    const allCard =await fetch(`https://openapi.programming-hero.com/api/plants`) 
