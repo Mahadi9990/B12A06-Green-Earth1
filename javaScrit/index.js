@@ -38,14 +38,12 @@ const cardAdd =(id,name,price)=>{
         price:price,
         date:date
     }
-     history.push(data)
-    console.log(history)
+    history.push(data)
     historyShowing(history)
 }
 const historyFilter = (itemId) => { 
-  const filtered = history.filter((el) => el.id !== itemId);
-  return filtered;
-};
+    console.log(itemId)
+}
 const spaner =(status)=>{
     if(status === true){
         document.getElementById("loader").classList.remove("hidden")
