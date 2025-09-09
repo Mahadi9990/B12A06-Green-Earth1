@@ -97,7 +97,7 @@ const makeCard =(details)=>{
             spaner(false)
         }
         createCard.innerHTML =`
-            <div  class="item rounded-md bg-white p-3 flex flex-col gap-2">
+            <div  class="item rounded-md bg-white p-3 flex flex-col gap-2 shadow-lg">
             <img class="rounded-xl h-40 w-full object-cover" src="${item.image}" alt="">
             <h1 onclick="oneCardModel(${item.id})" class="text-xl font-bold cursor-pointer">${item.name}</h1>
             <p class="text-sm overflow-hidden text-ellipsis whitespace-normal [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]">
