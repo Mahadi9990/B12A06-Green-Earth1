@@ -1,4 +1,28 @@
 
+const history =[]
+
+const historyShowing =(historyArray)=>{
+    const historyDiv = document.getElementById("history_Loop")
+    historyDiv.innerHTML = ""
+    for(let item of historyArray){
+        const newHistory = document.createElement("div")
+        newHistory.innerHTML = `
+        <div class="flex flex-row items-center justify-between">
+                  <div class="text">
+                    <h2 class="text-sm font-semibold">${item.treeName}</h2>
+                    <p class="text-xs text-[#a39d9d]">$${item.price} x 1</p>
+                    <p class="text-xs text-[#a39d9d]">${item.date}</p>
+                  </div>
+                  <div class="icon">
+                    <i onclick="historyFilter(${item.id})" class=" fa-solid fa-xmark"></i>
+                  </div>
+        </div>
+        `
+        historyDiv.append(newHistory)
+    }
+    
+}
+
 const removeButtonStyle = ()=>{
  const allbtn = document.querySelectorAll('.menu_btn')
  allbtn.forEach(element => {
@@ -6,9 +30,22 @@ const removeButtonStyle = ()=>{
  });
  
 }
-const cardAdd =(item)=>{
-    alert(item)
+const cardAdd =(id,name,price)=>{
+    const date = new Date().toLocaleTimeString()
+    const data = {
+        id:id,
+        treeName:name,
+        price:price,
+        date:date
+    }
+     history.push(data)
+    console.log(history)
+    historyShowing(history)
 }
+const historyFilter = (itemId) => { 
+  const filtered = history.filter((el) => el.id !== itemId);
+  return filtered;
+};
 const spaner =(status)=>{
     if(status === true){
         document.getElementById("loader").classList.remove("hidden")
@@ -72,7 +109,7 @@ const makeCard =(details)=>{
                 <button class="btn bg-[#DCFCE7] text-[#15803D] rounded-3xl">${item.category}</button>
                 <button ><i class="fa-solid fa-bangladeshi-taka-sign"></i> ${item.price}</button>
             </div>
-            <button onclick="cardAdd(${item})" class="text-white btn w-full rounded-3xl bg-[#15803D]">Add to Card</button>
+            <button onclick="cardAdd(${item.id},'${item.name}',${item.price})" class="text-white btn w-full rounded-3xl bg-[#15803D]">Add to Card</button>
             </div>
             `
             card.append(createCard)
