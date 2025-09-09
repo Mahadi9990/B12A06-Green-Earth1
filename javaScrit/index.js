@@ -1,11 +1,17 @@
 
-let history = [
-   
-];
+let history = [];
+let total = 0
 
 const historyFilter = (itemId) => {
     history = history.filter(item => item.id !== itemId);
-    const main = document.getElementById(`btn-history-${itemId}`).classList.add("hidden")
+     document.getElementById(`btn-history-${itemId}`).classList.add("hidden")
+     fetch(`https://openapi.programming-hero.com/api/plant/${itemId}`)
+    .then(res => res.json())
+    .then(value => {
+      let price = value.plants?.price || 0; 
+      total -= price; 
+      document.getElementById("total_price").innerText = `$${total}`;
+    })
     return history
 }
 
@@ -14,6 +20,8 @@ const historyFilter = (itemId) => {
 
 const historyShowing =(historyArray)=>{
     const historyDiv = document.getElementById("history_Loop")
+     total = historyArray.reduce((sum, product) => sum + product.price, 0);
+    document.getElementById("total_price").innerText = `${total}`;
     historyDiv.innerHTML = ""
     for(let item of historyArray){
         const newHistory = document.createElement("div")
