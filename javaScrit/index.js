@@ -6,6 +6,9 @@ const removeButtonStyle = ()=>{
  });
  
 }
+const cardAdd =(item)=>{
+    alert(item)
+}
 const spaner =(status)=>{
     if(status === true){
         document.getElementById("loader").classList.remove("hidden")
@@ -26,7 +29,7 @@ const oneCardModel =async(id)=>{
         <div class="modal-box space-y-6" id="model_box">
             <img class="rounded-xl h-40 w-full object-cover" src="${cardData.image}" alt="">
             <h1 onclick="oneCardModel(${cardData.id})" class="text-xl font-bold cursor-pointer">${cardData.name}</h1>
-            <p class="text-sm overflow-hidden text-ellipsis whitespace-normal [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]">
+            <p class="text-sm">
               ${cardData.description}
             </p>
             <div class="flex justify-between items-center">
@@ -69,7 +72,7 @@ const makeCard =(details)=>{
                 <button class="btn bg-[#DCFCE7] text-[#15803D] rounded-3xl">${item.category}</button>
                 <button ><i class="fa-solid fa-bangladeshi-taka-sign"></i> ${item.price}</button>
             </div>
-            <button class="text-white btn w-full rounded-3xl bg-[#15803D]">Add to Card</button>
+            <button onclick="cardAdd(${item})" class="text-white btn w-full rounded-3xl bg-[#15803D]">Add to Card</button>
             </div>
             `
             card.append(createCard)
