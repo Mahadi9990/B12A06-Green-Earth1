@@ -9,8 +9,12 @@ const historyFilter = (itemId) => {
     .then(res => res.json())
     .then(value => {
       let price = value.plants?.price || 0; 
-      total -= price; 
-      document.getElementById("total_price").innerText = `$${total}`;
+      total -= price;
+      if(total <= 0){
+          document.getElementById("total_price").innerText = `$0`;
+          return 
+        }
+        document.getElementById("total_price").innerText = `$${total}`;
     })
     return history
 }
